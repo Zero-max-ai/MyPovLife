@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { PrismaClient } from '@prisma/client/edge';
 import { withAccelerate } from "@prisma/extension-accelerate";
+import { stringBufferToString } from "hono/utils/html";
 
 const userRouter = new Hono<{
     Bindings: {
@@ -15,7 +16,16 @@ userRouter.get('/all', async (c) => {
     }).$extends(withAccelerate());
 
     try {
-        const res = await prisma.images.findMany();
+        const res = await prisma.images.findMany({
+            select: {
+                id: true,
+                title: true,
+                link: true,
+                width: true,
+                height: true,
+                size: true
+            }
+        });
         c.status(200);
         return c.json({ res });
     } catch (err) {

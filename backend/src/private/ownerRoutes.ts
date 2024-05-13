@@ -42,7 +42,7 @@ privateRoutes.post('/imgUpload', async (c) => {
     const body = await c.req.json();
     console.log(body);
     try {
-        const image_file = await prisma.images.create({
+        await prisma.images.create({
             data: {
                 title: body.title,
                 link: body.link,
@@ -50,19 +50,9 @@ privateRoutes.post('/imgUpload', async (c) => {
                 width: body.width,
                 height: body.height,
                 deviceName: body.deviceName,
+                tags: body.tags
             }
         });
-
-        if (body.tags.length > 0) {
-            for (let i = 0; i < body.tags.length; i++) {
-                await prisma.tags.create({
-                    data: {
-                        imageId: image_file.id,
-                        title: body.tags[i]
-                    }
-                });
-            }
-        }
 
         c.status(201);
         return c.json({ body, message: "new image uploaded" });

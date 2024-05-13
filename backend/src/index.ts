@@ -12,6 +12,6 @@ const app = new Hono<{
 app.use(cors());
 
 app.route('/user', userRouter);
-app.route('/ownerPrivateRoute' , privateRoutes);
+app.route('/ownerPrivateRoute', privateRoutes);
 
 export default app

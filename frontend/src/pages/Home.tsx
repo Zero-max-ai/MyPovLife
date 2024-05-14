@@ -19,42 +19,12 @@ const Home = () => {
       <Navbar />
       <div className="flex items-center justify-center py-20">
         <div className="w-1/2 mx-auto grid grid-cols-2 gap-3">
-          {images.map(({ id, link, title, size, width, height }) => {
+          {images.map(({ link, title, width, height }) => {
             return (
               <div className="">
                 <ImgCard
-                  id={id}
                   src={link}
                   title={title}
-                  size={size}
-                  width={width}
-                  height={height}
-                />
-              </div>
-            );
-          })}
-          {images.map(({ id, link, title, size, width, height }) => {
-            return (
-              <div className="">
-                <ImgCard
-                  id={id}
-                  src={link}
-                  title={title}
-                  size={size}
-                  width={width}
-                  height={height}
-                />
-              </div>
-            );
-          })}
-          {images.map(({ id, link, title, size, width, height }) => {
-            return (
-              <div className="">
-                <ImgCard
-                  id={id}
-                  src={link}
-                  title={title}
-                  size={size}
                   width={width}
                   height={height}
                 />

@@ -1,11 +1,8 @@
 import {
   IoSunnyOutline,
-  IoSearchOutline,
   IoMoonOutline,
   IoBuildOutline,
 } from "react-icons/io5";
-import { useRecoilState } from "recoil";
-import { search } from "../recoil/search";
 import { Link } from "react-router-dom";
 import { useCallback, useState } from "react";
 
@@ -43,7 +40,6 @@ const ThemeSelector = ({
 };
 
 const Navbar = () => {
-  const [searchStatus, setSearchState] = useRecoilState(search);
   const [theme, setTheme] = useTheme();
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
@@ -73,16 +69,6 @@ const Navbar = () => {
           MyPovLife
         </Link>
         <div className="flex items-center gap-5">
-          {/* <LogoButton
-            style="py-1 px-4 text-sm"
-            onClick={() => setSearchState(!searchStatus)}
-          >
-            <IoSearchOutline />
-            <span>Search...</span>
-            <span className="bg-gray-100 px-2 rounded-lg dark:bg-slate-700">
-              Ctrl K
-            </span>
-          </LogoButton> */}
           <div className="relative">
             <LogoButton onClick={() => setIsPopupVisible(!isPopupVisible)}>
               {renderThemeIcon()}

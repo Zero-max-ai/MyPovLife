@@ -1,25 +1,15 @@
 import { useRecoilValue } from "recoil";
 import { allImagesSelector } from "../recoil/allImages";
-// import { tagImgSelector } from "../recoil/tagImg";
 import { search } from "../recoil/search";
 import { ImgCardProps } from "../components/ImgCard";
 
 import SearchComp from "./Search";
 import ImgCard from "./ImgCard";
-// import FeatureCard from "./FeatureCard";
 import FilterTags from "./FilterTags";
-import { filterTag } from "../recoil/filterTag";
-
-// type tagImgProp = {
-//   images: string[];
-//   tag: string;
-// };
 
 const Home = () => {
   const searchStatus = useRecoilValue(search);
   const images = useRecoilValue(allImagesSelector);
-  const tags = useRecoilValue(filterTag);
-  // const tagImages = useRecoilValue(tagImgSelector);
 
   return (
     <main className="max-w-screen w-7/12 mx-auto flex flex-col items-center justify-center pb-10 dark:text-white">

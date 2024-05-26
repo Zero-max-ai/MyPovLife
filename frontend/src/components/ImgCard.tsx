@@ -1,4 +1,5 @@
 import Caption from "./Caption";
+import DownloadBtn from "./DownloadBtn";
 
 export interface ImgCardProps {
   id: string;
@@ -20,7 +21,7 @@ const ImgCard = ({
   tags,
 }: ImgCardProps) => {
   return (
-    <div className="max-w-sm bg-white dark:bg-transparent border border-gray-300 dark:border-gray-800 rounded-lg shadow select-none">
+    <div className="max-w-sm bg-white dark:bg-transparent border border-gray-300 dark:border-gray-800 rounded-lg shadow select-none group relative">
       <div key={id} className="w-full h-64 flex items-center justify-center">
         <img
           src={link}
@@ -28,6 +29,7 @@ const ImgCard = ({
           className="object-cover h-full w-full rounded-t-md"
         />
       </div>
+      <DownloadBtn />
 
       <div className="px-5 py-2">
         <h5 className="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">

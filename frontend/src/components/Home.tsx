@@ -1,65 +1,29 @@
 import { useRecoilValue } from "recoil";
-import { allImagesSelector } from "../recoil/allImages";
 import { search } from "../recoil/search";
-import { ImgCardProps } from "../components/ImgCard";
+import { filterTag } from "../recoil/filterTag";
 
 import SearchComp from "./Search";
-import ImgCard from "./ImgCard";
 import FilterTags from "./FilterTags";
+import AllImgsGen from "./AllImgsGen";
+import SpecificImgGen from "./SpecificImgGen";
 
 const Home = () => {
   const searchStatus = useRecoilValue(search);
-  const images = useRecoilValue(allImagesSelector);
+  const filter = useRecoilValue(filterTag);
 
   return (
-    <main className="max-w-screen w-7/12 mx-auto flex flex-col items-center justify-center pb-10 dark:text-white">
+    <main className=" min-h-[100vh] max-w-screen w-7/12 max-md:w-9/12 mx-auto flex flex-col py-20 dark:text-white">
       <FilterTags />
       {searchStatus && <SearchComp />}
       <div className="w-full">
         <h1 className="font-semibold text-3xl">My Photography Gallery</h1>
       </div>
       <div className="w-full py-4 flex flex-col gap-3">
-        <h1 className="font-extrathin text-xl">
+        <h1 className="font-extrathin text-xl max-md:text-base">
           Capturing moments from around the world
         </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {images.map(
-            ({
-              id,
-              title,
-              link,
-              format,
-              height,
-              width,
-              tags,
-            }: ImgCardProps) => (
-              <ImgCard
-                key={id}
-                id={id}
-                title={title}
-                link={link}
-                format={format}
-                height={height}
-                width={width}
-                tags={tags}
-              />
-            )
-          )}
-        </div>
+        {filter === "All Tags" ? <AllImgsGen /> : <SpecificImgGen />}
       </div>
-
-      {/* <div className="flex flex-col gap-3 w-full">
-        {tagImages.map(({ images, tag }: tagImgProp) => {
-          return (
-            <FeatureCard
-              key={tag}
-              heading={tag}
-              renderer={`/specific/${tag}`}
-              imgs={images}
-            />
-          );
-        })}
-      </div> */}
     </main>
   );
 };

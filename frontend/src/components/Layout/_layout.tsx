@@ -3,7 +3,7 @@ import Navbar from "../Navbar";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="max-w-screen dark:bg-[#030712]">
+    <div className="min-h-screen max-w-screen dark:bg-[#030712]">
       <Navbar />
       {children}
       <Footer />

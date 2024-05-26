@@ -1,8 +1,4 @@
-import {
-  IoSunnyOutline,
-  IoMoonOutline,
-  IoBuildOutline,
-} from "react-icons/io5";
+import { IoSunnyOutline, IoMoonOutline, IoBuildOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useCallback, useState } from "react";
 
